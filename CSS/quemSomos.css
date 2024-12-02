@@ -184,8 +184,8 @@ background-color: rgb(9, 86, 250);
 
 #header-img {
     height: 95vh;
-    width: 100%;
-
+    width: 100vw;
+    object-fit: cover;
 }
 body {
     font-family: 'JetBrains Mono';font-size: 15px;
