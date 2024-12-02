@@ -81,9 +81,11 @@ background-color: rgb(9, 86, 250);
 
 
 .footer {
-    background-image: linear-gradient(to right, #006eff, #0015FF);
+    background-image: linear-gradient(to right, #69aaff, #0056b3);
     padding: 20px 0;
     border-top: 0.5px solid #47688b;
+    border-top-left-radius: 80px;
+    color: white;
 }
 
 .footer .container {
@@ -104,7 +106,6 @@ background-color: rgb(9, 86, 250);
 .footer .social-card {
     background-color: rgba(255, 255, 255, 0.5);
     border: none;
-    text-align: center;
     padding: 10px;
     border-radius: 0.25rem;
 }
@@ -250,4 +251,12 @@ body {
 .card-title{
     font-weight: bold; 
     text-transform: capitalize;
+}
+.copyrightContainer{
+    justify-content: center;
+    color: white;
+    display: flex;
+}
+p>a{
+    color: white;
 }
