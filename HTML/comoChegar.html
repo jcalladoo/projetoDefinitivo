@@ -1,11 +1,209 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como Chegar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/comoChegar.css">
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+    <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
 </head>
+
 <body>
-  
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <header class="topoPagina">
+        <nav class="navbar navbar-expand-lg custom-menu fixed-top">
+            <div class="container-fluid">
+                <a href="../html/index.html" class="navbar-brand">
+                    <img src="../imagens/Matematica_no_Metro_Final_Edited.png" alt="Logo Matemática no Metrô" class="logo" width="100">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="../html/index.html" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../html/quemSomos.html" class="nav-link">Quem somos?</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../html/forum.html" class="nav-link">Fórum</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../html/comoChegar.html" style="background-color:#0011d1;" class="nav-link">Como
+                                chegar?</a>
+                        </li>
+                        <li class="nav-item d-lg-none">
+                            <a href="#" class="btn btn-primary login-button">Login</a>
+                        </li>
+                    </ul>
+                    <a href="#" style="margin: 8px 16px;"
+                        class="btn btn-primary login-button d-none d-lg-block">Login</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main id="mainContent">
+        <section class="container my-5">
+            <!-- Sacomã -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group mb-3">
+                        <input type="text" id="origin1" class="form-control" placeholder="Digite sua localização"
+                            aria-label="Digite sua localização">
+                        <button class="btn btn-primary" style="background-color:#0056b3;"
+                            onclick="updateMap('origin1', 'mapFrame1', 'Estação+Sacomã,SP')">Buscar Rota - Sacomã</button>
+                    </div>
+                    <iframe id="mapFrame1" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD2kpEDNxO-QFQvF3rPD0BXX5Vxki7xe6E&zoom=15&q=Estação+Sacomã,SP"
+                        class="mb-3">
+                    </iframe>
+                    <div class="row">
+                        <div class="col-md-6" id="">
+                            <div class="card p-3 shadow-sm" id="card-informacao">
+                                <h4 class="card-title">Estação Sacomã</h4>
+                                <p class="card-text">R. Agostinho Gomes, 3331 - Ipiranga, São Paulo - SP, 04206-000</p>
+                                <p class="card-text">Horário de funcionamento: 4h40 à 00h20</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card p-3 shadow-sm" id="card-informacao">
+                                <h4 class="card-title">Ponto de Atendimento</h4>
+                                <p class="card-text">Próximo à entrada da estação</p>
+                                <p class="card-text">Horário de funcionamento: 09:00 às 17:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Ana Rosa -->
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <div class="input-group mb-3">
+                        <input type="text" id="origin2" class="form-control" placeholder="Digite sua localização"
+                            aria-label="Digite sua localização">
+                        <button class="btn btn-primary" style="background-color:#0056b3;"
+                            onclick="updateMap('origin2', 'mapFrame2', 'Estação+Ana+Rosa,SP')">Buscar Rota - Ana Rosa</button>
+                    </div>
+                    <iframe id="mapFrame2" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD2kpEDNxO-QFQvF3rPD0BXX5Vxki7xe6E&zoom=15&q=Estação+Ana+Rosa,SP"
+                        class="mb-3">
+                    </iframe>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card p-3 shadow-sm" id="card-informacao">
+                                <h4 class="card-title">Estação Ana Rosa</h4>
+                                <p class="card-text">Av. Conselheiro Rodrigues Alves, 180 - Vila Mariana, São Paulo - SP, 04014-000</p>
+                                <p class="card-text">Horário de funcionamento: 4h40 à 00h20</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card p-3 shadow-sm" id="card-informacao">
+                                <h4 class="card-title">Ponto de Atendimento</h4>
+                                <p class="card-text">Próximo à entrada da estação</p>
+                                <p class="card-text">Horário de funcionamento: 09:00 às 17:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> 
+        <footer class="footer">
+            <div class="container">
+                <div class="social-cards">
+                    <div class="social-card bg-transparent">
+                        <img src="../imagens/engenharia-cursos-gratuitos.jpeg" alt="Facebook Logo">
+                        <div class="social-icons">
+                            <a href="#"><i class="fa-brands fa-facebook fa-s"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram fa-s"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter fa-s"></i></a>
+                        </div>
+                    </div>
+                    <div class="social-card bg-transparent">
+                        <img src="../imagens/images.png" alt="Instagram Logo">
+                        <div class="social-icons">
+                            <a href="#"><i class="fa-brands fa-facebook fa-s"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram fa-s"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter fa-s"></i></a>
+                        </div>
+                    </div>
+                    <div class="social-card bg-transparent">
+                        <img src="../imagens/logo-IMT-white.png" alt="Twitter Logo">
+                        <div class="social-icons">
+                            <a href="#"><i class="fa-brands fa-facebook fa-s"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram fa-s"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter fa-s"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-logo">
+                    <img src="../imagens/logo_branco.png" alt="Logo Matemática no Metrô" class="logo">
+                    <div>
+                        <a href="#"><i class="fa-brands fa-facebook fa-lg pe-2 ps-2"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram fa-lg pe-2"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>       
+        <main>
+            <script>
+                function updateMap(originId, mapFrameId, destination) {
+                    const origin = document.getElementById(originId).value;
+                    const mapFrame = document.getElementById(mapFrameId);
+                    if (origin) {
+                        mapFrame.src = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyD2kpEDNxO-QFQvF3rPD0BXX5Vxki7xe6E&origin=${encodeURIComponent(origin)}&destination=${destination}&mode=transit`;
+                    } else {
+                        alert('Por favor, insira sua localização.');
+                    }
+                }
+            </script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+                crossorigin="anonymous"></script>
+            <script src="../JS/scripts.js"></script>
 </body>
+
 </html>
