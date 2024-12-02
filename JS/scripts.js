@@ -84,8 +84,6 @@ loginForm.addEventListener('submit', (event) => {
         alert("Credenciais inválidas. Tente novamente.");
     }
 });
-
-
 function updateMap(originId, mapFrameId, destination) {
     const origin = document.getElementById(originId).value;
     const mapFrame = document.getElementById(mapFrameId);
@@ -95,5 +93,3 @@ function updateMap(originId, mapFrameId, destination) {
         alert('Por favor, insira sua localização.');
     }
 }
-
-

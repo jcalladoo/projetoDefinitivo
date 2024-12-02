@@ -5,7 +5,7 @@ html {
 /*navbar*/
 
 .navbar {
-    background-image: linear-gradient(to bottom, rgba(0,0,0), rgba(0,0,0,-1));
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0));
 }
 
 .topoPagina{
@@ -174,9 +174,13 @@ background-color: rgb(9, 86, 250);
 }
 
 #header-img {
-    height: 95vh;
+    height: 80vh;
     width: 100vw;
     object-fit: cover;
+}
+#header-img_ie {
+    height: auto;
+    width: 100%;
 }
 body {
     font-family: 'JetBrains Mono';font-size: 15px;
@@ -186,6 +190,9 @@ body {
     height: 100%;
     background-image: url(../imagens/image_patern.png);
     position: absolute;
+}
+.imagemQuemSomos{
+    position: relative;
 }
 .copyrightContainer{
     justify-content: center;
