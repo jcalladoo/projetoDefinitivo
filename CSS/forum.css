@@ -37,7 +37,7 @@ html {
     color: white;
     border-radius: 5px;
     padding: 8px 16px;
-    
+    font-size: 18px;
 }
 
 .nav-link:hover{
@@ -69,6 +69,7 @@ background-color: rgb(9, 86, 250);
     font-weight: bold;
     text-decoration: none;
     transition: background-color 0.3s;
+    font-size: 18px;
 }
 
 .login-button:hover {
