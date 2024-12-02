@@ -23,7 +23,8 @@ const loginForm = document.getElementById('loginForm');
 
 // Adiciona o efeito de desfoque ao fundo e exibe o modal ao clicar no botão de login
 loginButtons.forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault(); // Evita o comportamento padrão do botão
         mainContent.classList.add('blur-background');
         loginModal.show();
     });
@@ -83,6 +84,7 @@ loginForm.addEventListener('submit', (event) => {
     } else {
         alert("Credenciais inválidas. Tente novamente.");
     }
+<<<<<<< Updated upstream
 });
 function updateMap(originId, mapFrameId, destination) {
     const origin = document.getElementById(originId).value;
@@ -93,3 +95,6 @@ function updateMap(originId, mapFrameId, destination) {
         alert('Por favor, insira sua localização.');
     }
 }
+=======
+});
+>>>>>>> Stashed changes
