@@ -180,21 +180,6 @@
             </div>
         </footer>       
         <main>
-            <script>
-                function updateMap(originId, mapFrameId, destination) {
-                    const origin = document.getElementById(originId).value;
-                    const mapFrame = document.getElementById(mapFrameId);
-                    if (origin) {
-                        mapFrame.src = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyD2kpEDNxO-QFQvF3rPD0BXX5Vxki7xe6E&origin=${encodeURIComponent(origin)}&destination=${destination}&mode=transit`;
-                    } else {
-                        alert('Por favor, insira sua localização.');
-                    }
-                }
-            </script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-                crossorigin="anonymous"></script>
-            <script src="../JS/scripts.js"></script>
 </body>
 
 </html>

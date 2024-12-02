@@ -84,3 +84,16 @@ loginForm.addEventListener('submit', (event) => {
         alert("Credenciais inválidas. Tente novamente.");
     }
 });
+
+
+function updateMap(originId, mapFrameId, destination) {
+    const origin = document.getElementById(originId).value;
+    const mapFrame = document.getElementById(mapFrameId);
+    if (origin) {
+        mapFrame.src = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyD2kpEDNxO-QFQvF3rPD0BXX5Vxki7xe6E&origin=${encodeURIComponent(origin)}&destination=${destination}&mode=transit`;
+    } else {
+        alert('Por favor, insira sua localização.');
+    }
+}
+
+
