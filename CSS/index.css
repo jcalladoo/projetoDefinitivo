@@ -133,35 +133,6 @@ background-color: rgb(9, 86, 250);
 
 /*corpo*/
 
-.carousel {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.carousel-inner {
-    width: 100%;
-    height: 95vh;
-    display: flex;
-}
-.carousel-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease-in-out;
-}
-.carousel-control-prev,
-.carousel-control-next,
-.carousel-indicators {
-    display: none;
-}
-
-.card-img-fill {
-    width: 100%;
-    height: 100%;
-    object-fit:contain;
-    border-radius: 0.25rem;
-}
 
 .cards-section .card {
     height: 100%;
@@ -260,18 +231,18 @@ body {
 p>a{
     color: white;
 }
-#index_image{
-    width: 100%;
-    height: 90vh;
-    border-bottom-right-radius: 125px;
+#home {
+    background-color: #0056b3;
+    color: white; 
+    border-bottom-right-radius: 80px;
+    padding-top: 2%;
 }
-.reticula{
-    width: 100%;
-    height: 100%;
-    background-image: url(../imagens/image_patern.png);
-    position: absolute;
-    border-bottom-right-radius: 125px;
+#home h1 {
+    font-size: 2.5rem; 
+    font-weight: bold; 
 }
-.image_index{
-    position: relative;
+
+#home p {
+    font-size: 1.2rem; 
+    line-height: 1.6; 
 }
