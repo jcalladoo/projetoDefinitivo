@@ -231,26 +231,10 @@ body {
 p>a{
     color: white;
 }
-#index_image{
-    width: 100%;
-    height: 90vh;
-    border-bottom-right-radius: 125px;
-}
-.reticula{
-    width: 100%;
-    height: 100%;
-    background-image: url(../imagens/image_patern.png);
-    position: absolute;
-    border-bottom-right-radius: 125px;
-}
-.image_index{
-    position: relative;
-}
-
 #home {
     background-color: #0056b3;
     color: white; 
-    border-bottom-right-radius: 125px;
+    border-bottom-right-radius: 80px;
     padding-top: 2%;
 }
 #home h1 {
