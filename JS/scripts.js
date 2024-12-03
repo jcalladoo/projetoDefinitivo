@@ -1,5 +1,6 @@
 // mongodb+srv://projetointegradorfrontend:senha123@projetointegrador.n3yko.mongodb.net/?retryWrites=true&w=majority&appName=ProjetoIntegrador
 
+//Tempo do carrossel
 document.addEventListener('DOMContentLoaded', () => {
     var carouselElement = document.querySelector('#carouselId');
     var carousel = new bootstrap.Carousel(carouselElement, {
@@ -15,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Inicializa o modal de login do Bootstrap
+// Constantes
 const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
 const loginButtons = document.querySelectorAll('.login-button');
 const mainContent = document.getElementById('mainContent');
@@ -24,15 +25,10 @@ const loginForm = document.getElementById('loginForm');
 // Adiciona o efeito de desfoque ao fundo e exibe o modal ao clicar no botão de login
 loginButtons.forEach(button => {
     button.addEventListener('click', (event) => {
-        event.preventDefault(); // Evita o comportamento padrão do botão
+        event.preventDefault();
         mainContent.classList.add('blur-background');
         loginModal.show();
     });
-});
-
-// Remove o efeito de desfoque ao fechar o modal
-document.getElementById('loginModal').addEventListener('hidden.bs.modal', () => {
-    mainContent.classList.remove('blur-background');
 });
 
 // Lógica de login
@@ -84,8 +80,9 @@ loginForm.addEventListener('submit', (event) => {
     } else {
         alert("Credenciais inválidas. Tente novamente.");
     }
-<<<<<<< Updated upstream
 });
+
+//Função do mapa da api do google
 function updateMap(originId, mapFrameId, destination) {
     const origin = document.getElementById(originId).value;
     const mapFrame = document.getElementById(mapFrameId);
@@ -95,6 +92,3 @@ function updateMap(originId, mapFrameId, destination) {
         alert('Por favor, insira sua localização.');
     }
 }
-=======
-});
->>>>>>> Stashed changes
