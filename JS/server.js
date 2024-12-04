@@ -4,6 +4,7 @@
 const express = require ('express')
 const app = express()
 app.use(express.json())
+const bcrypt = require('bcrypt')
 
 const cors = require ('cors')
 app.use(cors())
@@ -41,27 +42,24 @@ app.listen(3000, () => {
 const jwt = require("jsonwebtoken")
 //POST http://localhost:3000/login
 app.post('/login', async (req, res) => {
-    console.log("Requisição de login recebida"); // Adicionar log
-    //login/senha que o usuário enviou
-    const login = req.body.login
-    const senha = req.body.senha
-    console.log("Dados recebidos:", login, senha); // Adicionar log
-    //tentamos encontrar no MongoDB
-    const u = await Usuario.findOne({login: req.body.login})
-    if(!u){
-        //senão foi encontrado, encerra por aqui com código 401
-        return res.status(401).json({mensagem: "login inválido"})
+    const { login, senha } = req.body;
+    console.log("Requisição de login recebida:", req.body); // Log para depuração
+
+    try {
+        const usuario = await Usuario.findOne({ login });
+        if (!usuario) {
+            return res.status(401).json({ mensagem: 'Credenciais inválidas.' });
+        }
+
+        const senhaValida = await bcrypt.compare(senha, usuario.senha);
+        if (!senhaValida) {
+            return res.status(401).json({ mensagem: 'Credenciais inválidas.' });
+        }
+
+        const token = jwt.sign({ id: usuario._id }, 'seuSegredo', { expiresIn: '1h' });
+        res.status(200).json({ mensagem: 'Login realizado com sucesso!', token });
+    } catch (error) {
+        console.error("Erro ao processar login:", error); // Log para depuração
+        res.status(500).json({ mensagem: 'Erro no servidor.' });
     }
-    //se foi encontrado, comparamos a senha, após descriptográ-la
-    const senhaValida = await bcrypt.compare(senha, u.senha)
-    if (!senhaValida){
-        return res.status(401).json({mensagem: "senha inválida"})
-    }
-    // Se chegamos nessa linha, então usuário válido.
-    const token = jwt.sign(
-        {login: login},
-        "chave-secreta",
-        {expiresIn: "1h"}
-    )
-    res.status(200).json({token: token})
-})
+});
