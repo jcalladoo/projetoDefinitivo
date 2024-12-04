@@ -177,4 +177,25 @@ p>a{
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
 }
+@media (max-width: 768px){
+    #card_forum3_1{
+        padding: 3%;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 15px;
+        height: auto;
+        margin-bottom: 5px;
+    }
+    #card_forum_2{
+        padding: 3%;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 15px;
+        height: auto;
+        margin-bottom: 0;
+    }
+    #card_forum_ultimo{
+        padding: 3%;
+        height: auto;
+        margin-bottom: 0;
+    }
+}
 
