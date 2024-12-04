@@ -162,40 +162,26 @@ body{
 p>a{
     color: white;
 }
-#card_forum3{
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
-    margin-right: 40px;
-    margin-top: 5px
-}
 #card_forum{
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
-    margin-top: 5px;
+    padding: 2%;
 }
-#card_forum_ultimo{
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
+.card-title {
+    color: #0056b3;
+    font-weight: bold;
+  }
+#containerForm{
+    padding: 2%;
 }
-@media (max-width: 768px){
-    #card_forum3_1{
-        padding: 3%;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        border-radius: 15px;
-        height: auto;
-        margin-bottom: 5px;
-    }
-    #card_forum_2{
-        padding: 3%;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        border-radius: 15px;
-        height: auto;
-        margin-bottom: 0;
-    }
-    #card_forum_ultimo{
-        padding: 3%;
-        height: auto;
-        margin-bottom: 0;
-    }
-}
+#containerMod1{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: #cfcfcf49;
+    transition: transform 0.3s, box-shadow 0.3s;
 
+}
+#containerMod2{
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: #cfcfcf49;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
