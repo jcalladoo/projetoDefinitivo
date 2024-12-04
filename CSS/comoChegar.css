@@ -171,3 +171,69 @@ body {
 p>a{
   color: white;
 }
+@media (max-width: 768px) {
+  .navbar-brand .logo {
+      height: 60px;
+      width: 60px;
+  }
+}
+@media (max-width: 768px) {
+  .navbar-nav {
+      flex-direction: column; /* Torna os links verticais */
+      gap: 10px; /* Adiciona espaçamento entre links */
+  }
+
+  .navbar {
+      padding: 10px; /* Ajusta o espaçamento interno */
+  }
+}
+img, video {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+@media (max-width: 768px) {
+  .container {
+      padding: 10px; /* Reduz o espaçamento interno */
+  }
+
+  h1, h4, p {
+      font-size: 1rem; /* Reduz o tamanho das fontes */
+      text-align: center; /* Centraliza o texto */
+  }
+
+  .cards-section .card {
+      width: 100%; /* Faz os cards ocuparem toda a largura */
+      margin-bottom: 15px; /* Adiciona espaçamento entre cards */
+  }
+}
+body {
+  overflow-x: hidden; /* Evita scroll horizontal */
+}
+.logoFooter {
+  height: auto; /* Permite ajuste automático com a largura */
+  width: auto;
+  max-height: 150px; /* Limita a altura máxima em dispositivos maiores */
+  max-width: 150px; /* Limita a largura máxima */
+  object-fit: contain; /* Mantém a proporção da imagem */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  display: block; /* Garante o alinhamento como bloco */
+}
+@media (max-width: 768px) {
+  .logoFooter {
+      height: 150px;
+      width: 150px;
+  }
+  .footer .container {
+      flex-direction: column; /* Stack elements vertically */
+      align-items: center; /* Center align items */
+  }
+
+  .footer .social-cards {
+      margin-bottom: 20px; /* Add space below the social cards */
+  }
+
+  .footer-logo {
+      order: 1; /* Ensure the logo appears after the social cards */
+  }
+}

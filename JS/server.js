@@ -18,6 +18,11 @@ const usuarioSchema = mongoose.Schema({
 usuarioSchema.plugin(uniqueValidator)
 const Usuario = mongoose.model("Usuario", usuarioSchema)
 
+const avisoSchema = mongoose.Schema({
+    texto: { type: String, required: true }
+});
+const Aviso = mongoose.model("Aviso", avisoSchema);
+
 const conectarAoMongoDB = async () => {
     try {
         await mongoose.connect('mongodb+srv://projetointegradorfrontend:KUJRCnaIniy0Dct5@cluster-pi.biv5n.mongodb.net/?retryWrites=true&w=majority&appName=Cluster-PI', {
@@ -61,5 +66,34 @@ app.post('/login', async (req, res) => {
     } catch (error) {
         console.error("Erro ao processar login:", error); // Log para depuração
         res.status(500).json({ mensagem: 'Erro no servidor.' });
+    }
+});
+
+// Rota para obter o texto dos avisos
+app.get('/avisos', async (req, res) => {
+    try {
+        const aviso = await Aviso.findOne();
+        res.status(200).json(aviso || { texto: '' });
+    } catch (error) {
+        console.error("Erro ao buscar avisos:", error);
+        res.status(500).json({ mensagem: 'Erro ao buscar avisos.' });
+    }
+});
+
+// Rota para salvar o texto dos avisos
+app.post('/avisos', async (req, res) => {
+    const { texto } = req.body;
+    try {
+        let aviso = await Aviso.findOne();
+        if (aviso) {
+            aviso.texto = texto;
+        } else {
+            aviso = new Aviso({ texto });
+        }
+        await aviso.save();
+        res.status(200).json({ mensagem: 'Avisos salvos com sucesso!' });
+    } catch (error) {
+        console.error("Erro ao salvar avisos:", error);
+        res.status(500).json({ mensagem: 'Erro ao salvar avisos.' });
     }
 });

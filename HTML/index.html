@@ -87,7 +87,7 @@
     </div>
     <main id="mainContent">
         <section id="aluno_azul" >
-            <div class="container">
+            <div class="container divAzul">
                 <div class="row align-items-center">
                     <div class="col-md-6">
                         <img src="../imagens/estudante1.png" alt="Imagem ilustrativa" class="img-fluid rounded">
@@ -106,52 +106,46 @@
             <div class="row align-items-stretch">
                 <!-- Card Avisos -->
                 <div class="col-md-6 d-flex mb-3 mb-md-0">
-                    <div class="card w-100 h-auto">
+                    <div class="card w-100">
                         <div class="card-body cardAvisos">
-                            <h4 class="card-title">Avisos</h4>
-                            <ul>
-                                <li id = "avisos-text">
-                                    <h5 id = "avisos-text">02/12</h5>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum veritatis
-                                        voluptas iste nemo necessitatibus velit, possimus explicabo quisquam earum iusto
-                                        vero culpa voluptate
-                                        commodi quos, nobis natus? Unde, mollitia maxime!</p>
-                                </li>
-                                <li id = "avisos-text">
-                                    <h5>01/12</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem nobis laboriosam
-                                        recusandae cumque omnis. Quam quasi asperiores, quis illum consectetur
-                                        tenetur est voluptatibus ea tempore harum eaque similique vero quibusdam.</p>
-                                </li>
-                                <li id = "avisos-text">
-                                    <h5>30/11</h5>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium sed nihil
-                                        distinctio fugit ipsum cupiditate accusantium alias id, reprehenderit laborum,
-                                        voluptate rem! Tempore ducimus esse atque explicabo consequuntur repellat
-                                        officiis!</p>
-                                </li>
-                                <li id = "avisos-text">
-                                    <h5>29/11</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam consequatur
-                                        repudiandae consequuntur neque eius. Iure inventore nihil corrupti voluptate
-                                        nostrum a tempora. Corporis pariatur omnis cupiditate earum autem sunt. Sint?
-                                    </p>
-                                </li>
-                                <li id = "avisos-text">
-                                    <h5>28/11</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur qui
-                                        reprehenderit deleniti sint odio nam, quaerat architecto quae id vero
-                                        voluptatibus? Ipsa
-                                        pariatur corrupti temporibus blanditiis! Distinctio vel minus esse.</p>
-                                </li>
-                            </ul>
+                            <h4 class="card-title fixed">Avisos</h4>
+                            <div>
+                                <ul id = "conteudo-avisos">
+                                    <li>
+                                        <h5 id="data-text">02/12</h5>
+                                        <p id="aviso-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum veritatis voluptas iste nemo necessitatibus velit, possimus explicabo quisquam earum iusto vero culpa voluptate commodi quos, nobis natus? Unde, mollitia maxime!</p>
+                                    </li>
+                                    <li >
+                                        <h5 id="data-text">01/12</h5>
+                                        <p id="aviso-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem nobis laboriosam recusandae cumque omnis. Quam quasi asperiores, quis illum consectetur tenetur est voluptatibus ea tempore harum eaque similique vero quibusdam.</p>
+                                    </li>
+                                    <li >
+                                        <h5 id="data-text">30/11</h5>
+                                        <p id="aviso-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium sed nihil distinctio fugit ipsum cupiditate accusantium alias id, reprehenderit laborum, voluptate rem! Tempore ducimus esse atque explicabo consequuntur repellat officiis!</p>
+                                    </li>
+                                    <li>
+                                        <h5 id="data-text">29/11</h5>
+                                        <p id="aviso-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam consequatur repudiandae consequuntur neque eius. Iure inventore nihil corrupti voluptate nostrum a tempora. Corporis pariatur omnis cupiditate earum autem sunt. Sint?</p>
+                                    </li>
+                                    <li>
+                                        <h5 id="data-text">28/11</h5>
+                                        <p id="aviso-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur qui reprehenderit deleniti sint odio nam, quaerat architecto quae id vero voluptatibus? Ipsa
+                                            pariatur corrupti temporibus blanditiis! Distinctio vel minus esse.</p>
+                                    </li>
+                                    <li>
+                                        <h5 id="data-text">27/11</h5>
+                                        <p id="aviso-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur qui reprehenderit deleniti sint odio nam, quaerat architecto quae id vero voluptatibus? Ipsa
+                                            pariatur corrupti temporibus blanditiis! Distinctio vel minus esse.</p>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card Video -->
                 <div class="col-md-6 d-flex">
-                    <div class="card cardPubli w-100 h-auto">
+                    <div class="card cardPubli w-100">
                         <video autoplay loop muted class="videoPubli img-fluid">
                             <source src="../imagens/gifPublicidade.mp4" type="video/mp4">
                         </video>
@@ -225,14 +219,14 @@
                 <div class="social-card bg-transparent">
                     <h5 class="ps-3">Redes sociais</h5>
                     <ul>
-                        <li><a href="#"><i class="fa-brands fa-facebook fa-lg"></i></a> matematicanometro</li>
-                        <li><a href="#"><i class="fa-brands fa-instagram fa-lg"></i></a> @matematicanometro</li>
-                        <li><a href="#"><i class="fa-brands fa-twitter fa-lg"></i></a> matematicanometro</li>
+                        <li><a href="#"><i class="fa-brands fa-facebook fa-lg"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-instagram fa-lg"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-twitter fa-lg"></i></a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-logo">
-                <img src="../imagens/Matematica_no_Metro_Final_Edited.png" alt="Logo Matemática no Metrô"
+                <img src="../imagens/logo_final_mt.PNG" alt="Logo Matemática no Metrô"
                     class="logoFooter">
 
             </div>

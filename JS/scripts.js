@@ -4,7 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginButtons = document.querySelectorAll('.login-button');
     const mainContent = document.getElementById('mainContent');
     const loginForm = document.getElementById('loginForm');
-    const avisosField = document.getElementById('avisos-text');
+    const avisosField = document.querySelectorAll('#avisos-text');
+    const limitePagina = document.getElementById('limitePagina');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navbar = document.querySelector('.navbar');
+
+    // Garante que o administrador esteja deslogado ao abrir o site
+    localStorage.setItem('isLoggedIn', 'false');
 
     // Verifica se o administrador está logado
     const isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -12,12 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
         setLoggedInState();
     }
 
-    // Recupera o texto salvo no localStorage e exibe no campo "Avisos"
-    const savedAvisos = localStorage.getItem('avisos-text');
-    if (avisosField && savedAvisos) {
-        console.log("Texto salvo encontrado no localStorage:", savedAvisos); // Log para depuração
-        avisosField.textContent = savedAvisos;
-    }
+    // Recupera o texto salvo no MongoDB e exibe no campo "Avisos"
+    const fetchAvisos = async () => {
+        try {
+            const response = await axios.get('http://localhost:3000/avisos');
+            if (response.status === 200 && avisosField) {
+                console.log("Texto salvo encontrado no MongoDB:", response.data.texto); // Log para depuração
+                avisosField.forEach(field => field.textContent = response.data.texto);
+            }
+        } catch (error) {
+            console.error("Erro ao buscar avisos:", error);
+        }
+    };
+    fetchAvisos();
 
     // Adiciona o efeito de desfoque ao fundo e exibe o modal ao clicar no botão de login
     loginButtons.forEach(button => {
@@ -106,38 +119,51 @@ document.addEventListener('DOMContentLoaded', () => {
             button.replaceWith(logoutButton);
         });
 
-        // Habilita edição do campo "Avisos"
-        if (avisosField) {
-            console.log("Habilitando edição do campo 'Avisos'"); // Log para depuração
-            avisosField.setAttribute('contenteditable', 'true');
-            avisosField.style.border = '1px dashed black';
-            avisosField.style.padding = '5px';
-            avisosField.style.cursor = 'text';
+        // Habilita edição dos itens da lista "Avisos"
+        const dataItems = document.querySelectorAll('#data-text');
+        const avisoItems = document.querySelectorAll('#aviso-text');
+        
+        dataItems.forEach(item => {
+            item.setAttribute('contenteditable', 'true');
+            item.style.border = '1px dashed black';
+            item.style.padding = '5px';
+            item.style.cursor = 'text';
+        });
 
-            // Adiciona botão "Salvar" acima do card de avisos
-            const saveButton = document.createElement('button');
-            saveButton.textContent = 'Salvar';
-            saveButton.classList.add('btn', 'btn-sm');
-            saveButton.style.backgroundColor = '#0056b3';
-            saveButton.style.color = '#fff';
-            saveButton.style.marginBottom = '5px';
+        avisoItems.forEach(item => {
+            item.setAttribute('contenteditable', 'true');
+            item.style.border = '1px dashed black';
+            item.style.padding = '5px';
+            item.style.cursor = 'text';
+        });
 
-            const cardAvisos = avisosField.closest('.card');
-            if (cardAvisos) {
-                console.log("Adicionando botão 'Salvar'"); // Log para depuração
-                cardAvisos.parentNode.insertBefore(saveButton, cardAvisos);
+        // Adiciona botão "Salvar" abaixo do card de avisos
+        const saveButton = document.createElement('button');
+        saveButton.textContent = 'Salvar';
+        saveButton.classList.add('btn', 'btn-sm');
+        saveButton.style.backgroundColor = '#0056b3';
+        saveButton.style.color = '#fff';
+        saveButton.style.marginTop = '5px';
 
-                // Evento para salvar alterações no campo "Avisos"
-                saveButton.addEventListener('click', () => {
-                    const updatedText = avisosField.textContent;
-                    localStorage.setItem('avisos-text', updatedText);
+        const cardAvisos = document.querySelector('.cardAvisos');
+        if (cardAvisos) {
+            console.log("Adicionando botão 'Salvar'"); // Log para depuração
+            cardAvisos.parentNode.appendChild(saveButton);
+
+            // Evento para salvar alterações nos itens da lista "Avisos"
+            saveButton.addEventListener('click', async () => {
+                const updatedText = Array.from(dataItems).map(item => item.textContent).join('\n') + '\n' +
+                                    Array.from(avisoItems).map(item => item.textContent).join('\n');
+                try {
+                    await axios.post('http://localhost:3000/avisos', { texto: updatedText });
                     alert("Alterações salvas com sucesso!");
-                });
-            } else {
-                console.error("O elemento 'cardAvisos' não foi encontrado.");
-            }
+                } catch (error) {
+                    console.error("Erro ao salvar avisos:", error);
+                    alert("Erro ao salvar alterações.");
+                }
+            });
         } else {
-            console.error("O elemento 'avisos-text' não foi encontrado.");
+            console.error("O elemento 'cardAvisos' não foi encontrado.");
         }
     }
 

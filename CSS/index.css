@@ -126,10 +126,35 @@ background-color: rgb(9, 86, 250);
     font-size: 1.5rem;
 }
 
-.logoFooter{
-    height: 150px;
-    width: 150px;
+.logoFooter {
+    height: auto; /* Permite ajuste automático com a largura */
+    width: auto;
+    max-height: 150px; /* Limita a altura máxima em dispositivos maiores */
+    max-width: 150px; /* Limita a largura máxima */
+    object-fit: contain; /* Mantém a proporção da imagem */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    display: block; /* Garante o alinhamento como bloco */
 }
+@media (max-width: 768px) {
+    .logoFooter {
+        height: 150px;
+        width: 150px;
+    }
+    .footer .container {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center align items */
+    }
+
+    .footer .social-cards {
+        margin-bottom: 20px; /* Add space below the social cards */
+    }
+
+    .footer-logo {
+        order: 1; /* Ensure the logo appears after the social cards */
+    }
+}
+
+
 
 /*corpo*/
 
@@ -144,10 +169,33 @@ background-color: rgb(9, 86, 250);
     box-shadow: 0 30px 30px rgba(0, 0, 0, 0.1);
 }
 .cardAvisos{
-    overflow: hidden;
-    max-height: 70vh;
+    max-height: 100vh;
+    overflow: scroll;
 }
 
+#conteudo-avisos{
+    overflow: hidden;
+
+}
+@media (max-width: 991px){      
+    .cardPubli{
+        height: 70vh !important;
+    }
+    .cardAvisos{
+        height: 70vh !important;
+    }
+}
+@media (max-width: 768px){
+    .cardPubli{
+        object-fit: cover;
+    }
+    #mainContent{   
+        width: 100%;
+    }
+    body {
+        overflow-x: hidden; /* Add this line to prevent horizontal scrolling */
+    }
+}
 .cards-section .card video {
     object-fit: contain;
     height: auto;
@@ -207,6 +255,7 @@ video{
 }
 .videoPubli{
     overflow: hidden;
+    height: 70vh;
 }
 #cardcomochegar{
     background-image: linear-gradient(to bottom right, #69aaff, #0056b3);
@@ -218,6 +267,7 @@ video{
 }
 body {
     font-family: 'JetBrains Mono';font-size: 15px;
+    width: 100%;
 }
 .card-title{
     font-weight: bold; 
@@ -245,4 +295,43 @@ p>a{
 #aluno_azul p {
     font-size: 1.2rem; 
     line-height: 1.6; 
+}
+@media (max-width: 768px) {
+    .navbar-brand .logo {
+        height: 60px;
+        width: 60px;
+    }
+}
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column; /* Torna os links verticais */
+        gap: 10px; /* Adiciona espaçamento entre links */
+    }
+
+    .navbar {
+        padding: 10px; /* Ajusta o espaçamento interno */
+    }
+}
+img, video {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+@media (max-width: 768px) {
+    .container {
+        padding: 10px; /* Reduz o espaçamento interno */
+    }
+
+    h1, h4, p {
+        font-size: 1rem; /* Reduz o tamanho das fontes */
+        text-align: center; /* Centraliza o texto */
+    }
+
+    .cards-section .card {
+        width: 100%; /* Faz os cards ocuparem toda a largura */
+        margin-bottom: 15px; /* Adiciona espaçamento entre cards */
+    }
+}
+body {
+    overflow-x: hidden; /* Evita scroll horizontal */
 }
