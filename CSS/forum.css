@@ -2,6 +2,30 @@ html {
     scroll-behavior: smooth;
 }
 
+img, video {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+@media (max-width: 768px) {
+    .container {
+        padding: 10px; /* Reduz o espaçamento interno */
+    }
+
+    h1, h4, p {
+        font-size: 1rem; /* Reduz o tamanho das fontes */
+        text-align: center; /* Centraliza o texto */
+    }
+
+    .cards-section .card {
+        width: 100%; /* Faz os cards ocuparem toda a largura */
+        margin-bottom: 15px; /* Adiciona espaçamento entre cards */
+    }
+}
+body {
+    overflow-x: hidden; /* Evita scroll horizontal */
+}
+
 /*navbar*/
 
 .navbar {
@@ -80,7 +104,53 @@ background-color: rgb(9, 86, 250);
     padding-top: 100px;
 }
 
+@media (max-width: 768px) {
+    .navbar-brand .logo {
+        height: 60px;
+        width: 60px;
+    }
+}
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column; /* Torna os links verticais */
+        gap: 10px; /* Adiciona espaçamento entre links */
+    }
+
+    .navbar {
+        padding: 10px; /* Ajusta o espaçamento interno */
+    }
+}
+
 /*footer*/
+
+.logoFooter {
+    height: auto; /* Permite ajuste automático com a largura */
+    width: auto;
+    max-height: 150px; /* Limita a altura máxima em dispositivos maiores */
+    max-width: 150px; /* Limita a largura máxima */
+    object-fit: contain; /* Mantém a proporção da imagem */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    display: block; /* Garante o alinhamento como bloco */
+}
+@media (max-width: 768px) {
+    .logoFooter {
+        height: 150px;
+        width: 150px;
+    }
+    .footer .container {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center align items */
+    }
+
+    .footer .social-cards {
+        margin-bottom: 20px; /* Add space below the social cards */
+    }
+
+    .footer-logo {
+        order: 1; /* Ensure the logo appears after the social cards */
+    }
+}
+
 
 .footer {
     background-image: linear-gradient(to right, #69aaff, #0056b3);
@@ -94,10 +164,6 @@ background-color: rgb(9, 86, 250);
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.footer .logo {
-    width: 100px;
 }
 
 .footer .social-cards {
@@ -119,12 +185,6 @@ background-color: rgb(9, 86, 250);
 
 .footer .social-card .social-icons {
     margin-top: 10px;
-}
-
-.footer .social-card .social-icons a {
-    color: #333;
-    margin: 0 5px;
-    font-size: 1.5rem;
 }
 
 .logoFooter{
@@ -166,96 +226,5 @@ p>a{
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
     margin-top: 5px;
+    padding: 3%;
 }
-#card_forum_ultimo{
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
-}
-@media (max-width: 768px){
-    #card_forum3_1{
-        padding: 3%;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        border-radius: 15px;
-        height: auto;
-        margin-bottom: 5px;
-    }
-    #card_forum_2{
-        padding: 3%;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        border-radius: 15px;
-        height: auto;
-        margin-bottom: 0;
-    }
-    #card_forum_ultimo{
-        padding: 3%;
-        height: auto;
-        margin-bottom: 0;
-    }
-}
-@media (max-width: 768px) {
-    .navbar-brand .logo {
-        height: 60px;
-        width: 60px;
-    }
-}
-@media (max-width: 768px) {
-    .navbar-nav {
-        flex-direction: column; /* Torna os links verticais */
-        gap: 10px; /* Adiciona espaçamento entre links */
-    }
-
-    .navbar {
-        padding: 10px; /* Ajusta o espaçamento interno */
-    }
-}
-img, video {
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-}
-@media (max-width: 768px) {
-    .container {
-        padding: 10px; /* Reduz o espaçamento interno */
-    }
-
-    h1, h4, p {
-        font-size: 1rem; /* Reduz o tamanho das fontes */
-        text-align: center; /* Centraliza o texto */
-    }
-
-    .cards-section .card {
-        width: 100%; /* Faz os cards ocuparem toda a largura */
-        margin-bottom: 15px; /* Adiciona espaçamento entre cards */
-    }
-}
-body {
-    overflow-x: hidden; /* Evita scroll horizontal */
-}
-.logoFooter {
-    height: auto; /* Permite ajuste automático com a largura */
-    width: auto;
-    max-height: 150px; /* Limita a altura máxima em dispositivos maiores */
-    max-width: 150px; /* Limita a largura máxima */
-    object-fit: contain; /* Mantém a proporção da imagem */
-    margin: 0 auto; /* Centraliza horizontalmente */
-    display: block; /* Garante o alinhamento como bloco */
-}
-@media (max-width: 768px) {
-    .logoFooter {
-        height: 150px;
-        width: 150px;
-    }
-    .footer .container {
-        flex-direction: column; /* Stack elements vertically */
-        align-items: center; /* Center align items */
-    }
-
-    .footer .social-cards {
-        margin-bottom: 20px; /* Add space below the social cards */
-    }
-
-    .footer-logo {
-        order: 1; /* Ensure the logo appears after the social cards */
-    }
-}
-
