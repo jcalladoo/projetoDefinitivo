@@ -1,6 +1,29 @@
 html {
   scroll-behavior: smooth;
 }
+img, video {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+@media (max-width: 768px) {
+  .container {
+      padding: 10px; /* Reduz o espaçamento interno */
+  }
+
+  h1, h4, p {
+      font-size: 1rem; /* Reduz o tamanho das fontes */
+      text-align: center; /* Centraliza o texto */
+  }
+
+  .cards-section .card {
+      width: 100%; /* Faz os cards ocuparem toda a largura */
+      margin-bottom: 15px; /* Adiciona espaçamento entre cards */
+  }
+}
+body {
+  overflow-x: hidden; /* Evita scroll horizontal */
+}
 
 /*navbar*/
 
@@ -79,6 +102,22 @@ background-color: rgb(9, 86, 250);
 .my-5{ 
     padding-top: 100px;
 }
+@media (max-width: 768px) {
+  .navbar-brand .logo {
+      height: 60px;
+      width: 60px;
+  }
+}
+@media (max-width: 768px) {
+  .navbar-nav {
+      flex-direction: column; /* Torna os links verticais */
+      gap: 10px; /* Adiciona espaçamento entre links */
+  }
+
+  .navbar {
+      padding: 10px; /* Ajusta o espaçamento interno */
+  }
+}
 
 /*footer*/
 
@@ -94,10 +133,6 @@ background-color: rgb(9, 86, 250);
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.footer .logo {
-  width: 100px;
 }
 
 .footer .social-cards {
@@ -125,11 +160,6 @@ background-color: rgb(9, 86, 250);
   color: #333;
   margin: 0 5px;
   font-size: 1.5rem;
-}
-
-.logoFooter{
-  height: 150px;
-  width: 150px;
 }
 
 /*corpo*/
@@ -170,45 +200,6 @@ body {
 }
 p>a{
   color: white;
-}
-@media (max-width: 768px) {
-  .navbar-brand .logo {
-      height: 60px;
-      width: 60px;
-  }
-}
-@media (max-width: 768px) {
-  .navbar-nav {
-      flex-direction: column; /* Torna os links verticais */
-      gap: 10px; /* Adiciona espaçamento entre links */
-  }
-
-  .navbar {
-      padding: 10px; /* Ajusta o espaçamento interno */
-  }
-}
-img, video {
-  max-width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-@media (max-width: 768px) {
-  .container {
-      padding: 10px; /* Reduz o espaçamento interno */
-  }
-
-  h1, h4, p {
-      font-size: 1rem; /* Reduz o tamanho das fontes */
-      text-align: center; /* Centraliza o texto */
-  }
-
-  .cards-section .card {
-      width: 100%; /* Faz os cards ocuparem toda a largura */
-      margin-bottom: 15px; /* Adiciona espaçamento entre cards */
-  }
-}
-body {
-  overflow-x: hidden; /* Evita scroll horizontal */
 }
 .logoFooter {
   height: auto; /* Permite ajuste automático com a largura */
