@@ -1,3 +1,5 @@
+import emailjs from 'emailjs/browser'
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log("DOM completamente carregado e analisado"); // Log para depuração
     const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
@@ -8,9 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const limitePagina = document.getElementById('limitePagina');
     const navLinks = document.querySelectorAll('.nav-link');
     const navbar = document.querySelector('.navbar');
-
-    // Garante que o administrador esteja deslogado ao abrir o site
-    localStorage.setItem('isLoggedIn', 'false');
 
     // Verifica se o administrador está logado
     const isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -101,22 +100,24 @@ document.addEventListener('DOMContentLoaded', () => {
     function setLoggedInState() {
         // Substitui os botões de login por novos botões de logout
         loginButtons.forEach(button => {
-            const logoutButton = document.createElement('a');
-            logoutButton.href = '#';
-            logoutButton.textContent = 'Logout';
-            logoutButton.classList.add('btn', 'btn-danger', 'd-flex', 'justify-content-center', 'align-items-center');
-            logoutButton.style.transition = 'all 0.3s ease';
-            logoutButton.style.width = button.offsetWidth + 'px'; // Define a largura do botão de logout igual ao de login
-            logoutButton.style.height = button.offsetHeight + 'px'; // Define a altura do botão de logout igual ao de login
-            logoutButton.addEventListener('click', (event) => {
-                event.preventDefault();
-                const confirmLogout = confirm("Você realmente deseja sair?");
-                if (confirmLogout) {
-                    localStorage.setItem('isLoggedIn', 'false');
-                    location.reload(); // Recarrega a página ao clicar em logout
-                }
-            });
-            button.replaceWith(logoutButton);
+            if (!button.classList.contains('logout-button')) {
+                const logoutButton = document.createElement('a');
+                logoutButton.href = '#';
+                logoutButton.textContent = 'Logout';
+                logoutButton.classList.add('btn', 'btn-danger', 'd-flex', 'justify-content-center', 'align-items-center', 'logout-button');
+                logoutButton.style.transition = 'all 0.3s ease';
+                logoutButton.style.width ='86px'; // Define a largura do botão de logout igual ao de login                
+                logoutButton.style.height ='43px'; // Define a altura do botão de logout igual ao de login
+                logoutButton.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const confirmLogout = confirm("Você realmente deseja sair?");
+                    if (confirmLogout) {
+                        localStorage.setItem('isLoggedIn', 'false');
+                        location.reload(); // Recarrega a página ao clicar em logout
+                    }
+                });
+                button.replaceWith(logoutButton);
+            }
         });
 
         // Habilita edição dos itens da lista "Avisos"
@@ -137,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
             item.style.cursor = 'text';
         });
 
-        // Adiciona botão "Salvar" abaixo do card de avisos
+        // Adiciona bot��o "Salvar" abaixo do card de avisos
         const saveButton = document.createElement('button');
         saveButton.textContent = 'Salvar';
         saveButton.classList.add('btn', 'btn-sm');
@@ -184,5 +185,46 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('searchButton').addEventListener('click', () => {
         console.log("Botão de busca clicado"); // Log para depuração
         updateMap('originInput', 'mapFrame', destination);
+    });
+
+    // Initialize EmailJS
+    emailjs.init('C8gZZ0UYPwp3qXzTq');
+
+    // Função para enviar email ao preencher os campos do formulário
+    const form = document.querySelector('#containerForm form');
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Evita o envio do formulário padrão
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const question = document.getElementById('question').value.trim();
+
+        if (!name || !email || !question) {
+            alert("Por favor, preencha todos os campos.");
+            return;
+        }
+
+        try {
+            console.log("Enviando email..."); // Log para depuração
+            const response = await emailjs.send('service_aoffo3j', 'template_fkgug8y', {
+                from_name: name,
+                from_email: email,
+                message: question,
+                to_name: 'Matematica no Metro',
+                to_email: 'projetointegradorfrontend@gmail.com',
+            }, 'C8gZZ0UYPwp3qXzTq');
+
+            console.log("Resposta do servidor:", response); // Log para depuração
+
+            if (response.status === 200) {
+                alert("Email enviado com sucesso!");
+                form.reset(); // Limpa o formulário após o envio
+            } else {
+                alert("Erro ao enviar email. Tente novamente.");
+            }
+        } catch (error) {
+            console.error("Erro ao enviar email:", error);
+            alert("Erro ao enviar email. Tente novamente.");
+        }
     });
 });

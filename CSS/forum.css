@@ -162,12 +162,6 @@ body{
 p>a{
     color: white;
 }
-#card_forum3{
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
-    margin-right: 40px;
-    margin-top: 5px
-}
 #card_forum{
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     border-radius: 15px;

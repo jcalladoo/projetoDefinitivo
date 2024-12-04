@@ -16,6 +16,7 @@
     </script>
     <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </head>
 
 <body>
@@ -45,7 +46,7 @@
                             <a href="../html/quemSomos.html" class="nav-link">Quem somos?</a>
                         </li>
                         <li class="nav-item">
-                            <a href="../html/forum.html" class="nav-link" style="background-color:#555555;">Fórum</a>
+                            <a href="../html/forum.html" style="background-color:#555555;" class="nav-link">Fórum</a>
                         </li>
                         <li class="nav-item">
                             <a href="../html/comoChegar.html" class="nav-link">Como chegar?</a>
@@ -53,9 +54,10 @@
                         <li class="nav-item d-lg-none">
                             <a href="#" class="btn btn-primary login-button">Login</a>
                         </li>
+                        <li class="nav-item d-none d-lg-block">
+                            <a href="#" class="btn btn-primary login-button">Login</a>
+                        </li>
                     </ul>
-                    <a href="#" style="margin: 8px 16px;"
-                        class="btn btn-primary login-button d-none d-lg-block">Login</a>
                 </div>
             </div>
         </nav>
@@ -88,16 +90,17 @@
 
     <main id="mainContent">
         <section class="container my-5">
-            <div class="row mb-4">
-                <div class="col-md-5" id="card_forum3_1">
-                    <h4>Módulo 1 - Operações Básicas</h4>
+            <div class="row" id="containerMod1">
+                <div class="col-md-6" id="card_forum">
+                    <h4 class="card-title">Módulo 1 - Operações Básicas</h4>
+                    <br>
                     <ul>
                         <li>
                             <h5>Adição e subtração</h5>
                         </li>
                         <ul>
-                            <li><a href="https://www.youtube.com/watch?v=e78_5WIssSU" target="_blank">Video aula.</a>
-                            <li><a href="../PDF/Adição_e_Subtração.pdf" target="_blank">Lista de exercicios.</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=e78_5WIssSU" target="_blank">Video aula.</a><i class="fa-brands fa-youtube ps-2" style="color: #000000;"></i></li>
+                            <li><a href="../PDF/Adição_e_Subtração.pdf" target="_blank">Lista de exercicios.</a><i class="fa-solid fa-file-pdf ps-2"></i></li>
                             </li>
                         </ul>
                         <br>
@@ -105,22 +108,22 @@
                             <h5>Divisão e multiplicação</h5>
                         </li>
                         <ul>
-                            <li><a href="https://www.youtube.com/watch?v=o2SJ5pUp_00" target="_blank">Video aula.</a>
-                            <li><a href="../PDF/Multiplicação_e_Divisão.pdf" target="_blank">Lista de exercicios.</a>
-                            </li>
+                            <li><a href="https://www.youtube.com/watch?v=o2SJ5pUp_00" target="_blank">Video aula.</a><i class="fa-brands fa-youtube ps-2" style="color: #000000;"></i></li>
+                            <li><a href="../PDF/Multiplicação_e_Divisão.pdf" target="_blank">Lista de exercicios.</a><i class="fa-solid fa-file-pdf ps-2"></i></li>
                             </li>
                         </ul>
                     </ul>
                 </div>
-                <div class="col-md-5" id="card_forum_2">
-                    <h4>Módulo 2 - Fração e Porcentagem</h4>
+                <div class="col-md-6" id="card_forum">
+                    <h4 class="card-title">Módulo 2 - Fração e Porcentagem</h4>
+                    <br>
                     <ul>
                         <li>
                             <h5>Fração</h5>
                         </li>
                         <ul>
-                            <li><a href="https://www.youtube.com/watch?v=YJyY6A_MOQc" target="_blank">Video aula.</a>
-                            <li><a href="../PDF/Operações_com_Frações.pdf" target="_blank">Lista de exercicios.</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=YJyY6A_MOQc" target="_blank">Video aula.</a><i class="fa-brands fa-youtube ps-2" style="color: #000000;"></i></li>
+                            <li><a href="../PDF/Operações_com_Frações.pdf" target="_blank">Lista de exercicios.</a><i class="fa-solid fa-file-pdf ps-2"></i></li>
                             </li>
                         </ul>
                         <br>
@@ -129,25 +132,26 @@
                         </li>
                         <ul>
                             <li><a href="https://www.youtube.com/watch?v=OjOyNmTt7Mw&list=PLGyv8aUrOlzDEaVkLuw5s41OpbydcFnCG"
-                                    target="_blank">Video aula.</a>
-                            <li><a href="../PDF/Porcentagem.pdf" target="_blank">Lista de exercicios.</a></li>
+                                    target="_blank">Video aula.</a><i class="fa-brands fa-youtube ps-2" style="color: #000000;"></i></li>
+                            <li><a href="../PDF/Porcentagem.pdf" target="_blank">Lista de exercicios.</a><i class="fa-solid fa-file-pdf ps-2"></i></li>
                             </li>
                         </ul>
                     </ul>
                     </ul>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-5" id="card_forum3_1">
-                    <h4>Módulo 3 - Potenciação e Radiciação</h4>
+            <div class="row" id="containerMod2">
+                <div class="col-md-6" id="card_forum">
+                    <h4 class="card-title">Módulo 3 - Potenciação e Radiciação</h4>
+                    <br>
                     <ul>
                         <li>
                             <h5>Potenciação</h5>
                         </li>
                         <ul>
                             <li><a href="https://www.youtube.com/watch?v=EqSiqXyfaqA&list=PLGyv8aUrOlzAyZObugwsCTi4u9O2UaoPz"
-                                    target="_blank">Video aula.</a>
-                            <li><a href="../PDF/Potenciação.pdf" target="_blank">Lista de exercicios.</a></li>
+                                    target="_blank">Video aula.</a><i class="fa-brands fa-youtube ps-2" style="color: #000000;"></i></li>
+                            <li><a href="../PDF/Potenciação.pdf" target="_blank">Lista de exercicios.</a><i class="fa-solid fa-file-pdf ps-2"></i></li>
                             </li>
                         </ul>
                         <br>
@@ -155,21 +159,23 @@
                             <h5>Radiciação</h5>
                         </li>
                         <ul>
-                            <li><a href="https://www.youtube.com/watch?v=QmIjZgKhAEo" target="_blank">Video aula.</a>
-                            <li><a href="../PDF/Radiciação.pdf" target="_blank">Lista de exercicios.</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=QmIjZgKhAEo" target="_blank">Video aula.</a><i class="fa-brands fa-youtube ps-2" style="color: #000000;"></i></li>
+                            <li><a href="../PDF/Radiciação.pdf" target="_blank">Lista de exercicios.</a><i class="fa-solid fa-file-pdf ps-2"></i></i>
                             </li>
                         </ul>
                     </ul>
                 </div>
-                <div class="col-md-5" id="card_forum_ultimo">
-                    <h4>Módulo 4 - Equações de Primeiro Grau</h4>
+                <div class="col-md-6" id="card_forum">
+                    <h4 class="card-title">Módulo 4 - Equações de Primeiro Grau</h4>
+                    <br>
                     <ul>
                         <li>
                             <h5>Equações de Primeiro Grau</h5>
                         </li>
                         <ul>
-                            <li><a href="https://www.youtube.com/watch?v=j6dy4VrsFvA" target="_blank">Video aula.</a>
-                            <li><a href="../PDF/Equação_Simples.pdf" target="_blank">Lista de exercicios.</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=j6dy4VrsFvA" target="_blank">Video aula.</a><i class="fa-brands fa-youtube ps-2" style="color: #000000;"></i></li>
+                            <li><a href="../PDF/Equação_Simples.pdf" target="_blank">Lista de exercicios.</a><i class="fa-solid fa-file-pdf ps-2"></i></li>
+                        </li>
                             </li>
                         </ul>
                     </ul>
@@ -177,12 +183,12 @@
             </div>
         </section>
 
-        <section class="container my-5">
+        <section class="container my-5" id="containerForm">
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card p-4 w-100 h-100 quadroDuvidas">
                         <h4 class="text-center mb-4">Sua dúvida não se encontra acima? Pergunte-nos diretamente.</h4>
-                        <form>
+                        <form id="questionForm">
                             <div class="mb-3">
                                 <label for="name" class="form-label"><i class="fa-solid fa-user pe-2"></i>Nome</label>
                                 <input type="text" class="form-control" id="name" placeholder="Seu nome">
@@ -219,9 +225,9 @@
                 <div class="social-card bg-transparent">
                     <h5 class="ps-3">Redes sociais</h5>
                     <ul>
-                        <li><a href="#"><i class="fa-brands fa-facebook fa-lg"></i></a></li>
-                        <li><a href="#"><i class="fa-brands fa-instagram fa-lg"></i></a></li>
-                        <li><a href="#"><i class="fa-brands fa-twitter fa-lg"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-facebook fa-lg"></i></a> matematicanometro</li>
+                        <li><a href="https://www.instagram.com/matematica_no_metro/" target="_blank"><i class="fa-brands fa-instagram fa-lg"></i></a> @matematica_no_metro</li>
+                        <li><a href="#"><i class="fa-brands fa-twitter fa-lg"></i></a> matematicanometro</li>
                     </ul>
                 </div>
             </div>
