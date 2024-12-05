@@ -97,3 +97,26 @@ app.post('/avisos', async (req, res) => {
         res.status(500).json({ mensagem: 'Erro ao salvar avisos.' });
     }
 });
+
+// Schema para perguntas
+const questionSchema = mongoose.Schema({
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    question: { type: String, required: true },
+    createdAt: { type: Date, default: Date.now },
+});
+const Question = mongoose.model('Question', questionSchema);
+
+// Rota para salvar perguntas
+app.post('/questions', async (req, res) => {
+    const { name, email, question } = req.body;
+
+    try {
+        const newQuestion = new Question({ name, email, question });
+        await newQuestion.save();
+        res.status(200).json({ message: 'Dúvida salva com sucesso!' });
+    } catch (error) {
+        console.error('Erro ao salvar dúvida:', error);
+        res.status(500).json({ message: 'Erro ao salvar dúvida.' });
+    }
+});

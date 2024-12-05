@@ -104,8 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 logoutButton.textContent = 'Logout';
                 logoutButton.classList.add('btn', 'btn-danger', 'd-flex', 'justify-content-center', 'align-items-center', 'logout-button');
                 logoutButton.style.transition = 'all 0.3s ease';
-                logoutButton.style.width ='86px'; // Define a largura do botão de logout igual ao de login                
-                logoutButton.style.height ='43px'; // Define a altura do botão de logout igual ao de login
+                logoutButton.style.width = '86px'; // Define a largura do botão de logout igual ao de login                
+                logoutButton.style.height = '43px'; // Define a altura do botão de logout igual ao de login
                 logoutButton.addEventListener('click', (event) => {
                     event.preventDefault();
                     const confirmLogout = confirm("Você realmente deseja sair?");
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Habilita edição dos itens da lista "Avisos"
         const dataItems = document.querySelectorAll('#data-text');
         const avisoItems = document.querySelectorAll('#aviso-text');
-        
+
         dataItems.forEach(item => {
             item.setAttribute('contenteditable', 'true');
             item.style.border = '1px dashed black';
@@ -146,13 +146,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const cardAvisos = document.querySelector('.cardAvisos');
         if (cardAvisos) {
-            console.log("Adicionando botão 'Salvar'"); // Log para depuração
             cardAvisos.parentNode.appendChild(saveButton);
 
             // Evento para salvar alterações nos itens da lista "Avisos"
             saveButton.addEventListener('click', async () => {
                 const updatedText = Array.from(dataItems).map(item => item.textContent).join('\n') + '\n' +
-                                    Array.from(avisoItems).map(item => item.textContent).join('\n');
+                    Array.from(avisoItems).map(item => item.textContent).join('\n');
                 try {
                     await axios.post('http://localhost:3000/avisos', { texto: updatedText });
                     alert("Alterações salvas com sucesso!");
@@ -166,63 +165,44 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Função do mapa da API do Google
-    const updateMap = (originId, mapFrameId, destination) => {
-        const origin = document.getElementById(originId).value.trim();
-        const mapFrame = document.getElementById(mapFrameId);
-        if (origin) {
-            console.log("Atualizando mapa com origem:", origin); // Log para depuração
-            mapFrame.src = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyD2kpEDNxO-QFQvF3rPD0BXX5Vxki7xe6E&origin=${encodeURIComponent(origin)}&destination=${destination}&mode=transit`;
-        } else {
-            alert('Por favor, insira sua localização.');
-        }
-    };
-
-    // Exemplo de uso da função do mapa
-    const destination = "São Paulo, Brasil"; // Substitua pelo destino correto
-    document.getElementById('searchButton').addEventListener('click', () => {
-        console.log("Botão de busca clicado"); // Log para depuração
-        updateMap('originInput', 'mapFrame', destination);
-    });
-
-    // Initialize EmailJS
-    emailjs.init('C8gZZ0UYPwp3qXzTq');
-
-    // Função para enviar email ao preencher os campos do formulário
-    const form = document.querySelector('#containerForm form');
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault(); // Evita o envio do formulário padrão
+    // Formulário de dúvidas
+    document.getElementById('questionForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
 
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
         const question = document.getElementById('question').value.trim();
 
         if (!name || !email || !question) {
-            alert("Por favor, preencha todos os campos.");
+            alert('Por favor, preencha todos os campos.');
             return;
         }
 
         try {
-            console.log("Enviando email..."); // Log para depuração
-            const response = await emailjs.send('service_aoffo3j', 'template_fkgug8y', {
-                from_name: name,
-                from_email: email,
-                message: question,
-                to_name: 'Matematica no Metro',
-                to_email: 'projetointegradorfrontend@gmail.com',
-            }, 'C8gZZ0UYPwp3qXzTq');
-
-            console.log("Resposta do servidor:", response); // Log para depuração
+            const response = await axios.post('http://localhost:3000/questions', {
+                name,
+                email,
+                question,
+            });
 
             if (response.status === 200) {
-                alert("Email enviado com sucesso!");
-                form.reset(); // Limpa o formulário após o envio
-            } else {
-                alert("Erro ao enviar email. Tente novamente.");
+                alert('Sua dúvida foi enviada com sucesso!');
+                document.getElementById('questionForm').reset();
             }
         } catch (error) {
-            console.error("Erro ao enviar email:", error);
-            alert("Erro ao enviar email. Tente novamente.");
+            console.error('Erro ao enviar a dúvida:', error);
+            alert('Ocorreu um erro ao enviar sua dúvida. Tente novamente.');
         }
-    });
+    }); 
 });
+
+const updateMap = (originId, mapFrameId, destination) => {
+    const origin = document.getElementById(originId).value.trim();
+    const mapFrame = document.getElementById(mapFrameId);
+    if (origin) {
+        console.log("Atualizando mapa com origem:", origin); // Log para depuração
+        mapFrame.src = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyD2kpEDNxO-QFQvF3rPD0BXX5Vxki7xe6E&origin=${encodeURIComponent(origin)}&destination=${destination}&mode=transit`;
+    } else {
+        alert('Por favor, insira sua localização.');
+    }
+};
