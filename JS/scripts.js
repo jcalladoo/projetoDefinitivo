@@ -1,13 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("DOM completamente carregado e analisado"); // Log para depuração
+    console.log("DOM completamente carregado e analisado");
     const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
     const loginButtons = document.querySelectorAll('.login-button');
     const mainContent = document.getElementById('mainContent');
     const loginForm = document.getElementById('loginForm');
     const avisosField = document.querySelectorAll('#avisos-text');
-    const limitePagina = document.getElementById('limitePagina');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const navbar = document.querySelector('.navbar');
 
     // Verifica se o administrador está logado
     const isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -15,12 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
         setLoggedInState();
     }
 
-    // Recupera o texto salvo no MongoDB e exibe no campo "Avisos"
+    // Pega o texto salvo no MongoDB e exibe no "Avisos"
     const fetchAvisos = async () => {
         try {
             const response = await axios.get('http://localhost:3000/avisos');
             if (response.status === 200 && avisosField) {
-                console.log("Texto salvo encontrado no MongoDB:", response.data.texto); // Log para depuração
+                console.log("Texto salvo encontrado no MongoDB:", response.data.texto); 
                 avisosField.forEach(field => field.textContent = response.data.texto);
             }
         } catch (error) {
@@ -29,30 +26,30 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     fetchAvisos();
 
-    // Adiciona o efeito de desfoque ao fundo e exibe o modal ao clicar no botão de login
+    // Adiciona o efeito de desfoque ao fundo e exibe o modal login
     loginButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             event.preventDefault();
-            console.log("Botão de login clicado"); // Log para depuração
+            console.log("Botão de login clicado"); 
             mainContent.classList.add('blur-background');
             loginModal.show();
         });
 
         document.getElementById('loginModal').addEventListener('hidden.bs.modal', () => {
-            console.log("Modal de login fechado"); // Log para depuração
+            console.log("Modal de login fechado"); 
             mainContent.classList.remove('blur-background');
         });
     });
 
     // Lógica de login
     loginForm.addEventListener('submit', async (event) => {
-        event.preventDefault(); // Evita o envio do formulário
+        event.preventDefault(); 
 
         const login = document.getElementById('username').value.trim();
         const senha = document.getElementById('password').value.trim();
 
-        console.log("Login:", login); // Log para depuração
-        console.log("Senha:", senha); // Log para depuração
+        console.log("Login:", login); 
+        console.log("Senha:", senha); 
 
         if (!login || !senha) {
             alert("Por favor, preencha todos os campos.");
@@ -60,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            console.log("Enviando requisição de login"); // Log para depuração
+            console.log("Enviando requisição de login"); 
 
             // Envia requisição POST ao backend
             const response = await axios.post('http://localhost:3000/login', {
@@ -68,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 senha: senha
             });
 
-            console.log("Resposta recebida:", response); // Log para depuração
+            console.log("Resposta recebida:", response); 
 
             if (response.status === 200) {
                 alert("Login realizado com sucesso!");
@@ -104,21 +101,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 logoutButton.textContent = 'Logout';
                 logoutButton.classList.add('btn', 'btn-danger', 'd-flex', 'justify-content-center', 'align-items-center', 'logout-button');
                 logoutButton.style.transition = 'all 0.3s ease';
-                logoutButton.style.width = '86px'; // Define a largura do botão de logout igual ao de login                
-                logoutButton.style.height = '43px'; // Define a altura do botão de logout igual ao de login
+                logoutButton.style.width = '86px';               
+                logoutButton.style.height = '43px'; 
                 logoutButton.addEventListener('click', (event) => {
                     event.preventDefault();
                     const confirmLogout = confirm("Você realmente deseja sair?");
                     if (confirmLogout) {
                         localStorage.setItem('isLoggedIn', 'false');
-                        location.reload(); // Recarrega a página ao clicar em logout
+                        location.reload(); 
                     }
                 });
                 button.replaceWith(logoutButton);
             }
         });
 
-        // Habilita edição dos itens da lista "Avisos"
+        // Habilita edição do "Avisos"
         const dataItems = document.querySelectorAll('#data-text');
         const avisoItems = document.querySelectorAll('#aviso-text');
 
@@ -136,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
             item.style.cursor = 'text';
         });
 
-        // Adiciona bot��o "Salvar" abaixo do card de avisos
+        // Adiciona botão Salvar do avisos
         const saveButton = document.createElement('button');
         saveButton.textContent = 'Salvar';
         saveButton.classList.add('btn', 'btn-sm');
@@ -148,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cardAvisos) {
             cardAvisos.parentNode.appendChild(saveButton);
 
-            // Evento para salvar alterações nos itens da lista "Avisos"
+            // Evento para salvar alterações 
             saveButton.addEventListener('click', async () => {
                 const updatedText = Array.from(dataItems).map(item => item.textContent).join('\n') + '\n' +
                     Array.from(avisoItems).map(item => item.textContent).join('\n');
@@ -200,7 +197,7 @@ const updateMap = (originId, mapFrameId, destination) => {
     const origin = document.getElementById(originId).value.trim();
     const mapFrame = document.getElementById(mapFrameId);
     if (origin) {
-        console.log("Atualizando mapa com origem:", origin); // Log para depuração
+        console.log("Atualizando mapa com origem:", origin); 
         mapFrame.src = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyD2kpEDNxO-QFQvF3rPD0BXX5Vxki7xe6E&origin=${encodeURIComponent(origin)}&destination=${destination}&mode=transit`;
     } else {
         alert('Por favor, insira sua localização.');

@@ -48,7 +48,7 @@ const jwt = require("jsonwebtoken")
 //POST http://localhost:3000/login
 app.post('/login', async (req, res) => {
     const { login, senha } = req.body;
-    console.log("Requisição de login recebida:", req.body); // Log para depuração
+    console.log("Requisição de login recebida:", req.body); 
 
     try {
         const usuario = await Usuario.findOne({ login });
@@ -64,7 +64,7 @@ app.post('/login', async (req, res) => {
         const token = jwt.sign({ id: usuario._id }, 'seuSegredo', { expiresIn: '1h' });
         res.status(200).json({ mensagem: 'Login realizado com sucesso!', token });
     } catch (error) {
-        console.error("Erro ao processar login:", error); // Log para depuração
+        console.error("Erro ao processar login:", error); 
         res.status(500).json({ mensagem: 'Erro no servidor.' });
     }
 });
@@ -98,7 +98,7 @@ app.post('/avisos', async (req, res) => {
     }
 });
 
-// Schema para perguntas
+// Schema para receber o formulário de perguntas
 const questionSchema = mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true },

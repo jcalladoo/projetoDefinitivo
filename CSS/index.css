@@ -201,22 +201,48 @@ background-color: rgb(9, 86, 250);
     box-shadow: 0 30px 30px rgba(0, 0, 0, 0.1);
 }
 .cardAvisos{
-    max-height: 100vh;
-    overflow: scroll;
+    max-height: 140vh;
+    overflow-y: scroll;
 }
 
 #conteudo-avisos{
-    overflow: hidden;
-
+    overflow: fill;
+    object-fit: fill;
 }
-@media (max-width: 991px){      
+
+@media (max-width: 1200px){
     .cardPubli{
-        height: 70vh !important;
+        object-fit: cover;
     }
     .cardAvisos{
-        height: 70vh !important;
+        max-height: 70vh;
+        overflow-y: scroll;
+    }
+    #mainContent{   
+        width: 100%;
+    }
+    body {
+        overflow-x: hidden; /* Add this line to prevent horizontal scrolling */
     }
 }
+
+@media (max-width: 990px){
+    .cardPubli{
+        max-height: 60vh;
+        object-fit: cover;
+    }
+    .cardAvisos{
+        max-height: 60vh;
+        overflow-y: scroll;
+    }
+    #mainContent{   
+        width: 100%;
+    }
+    body {
+        overflow-x: hidden; /* Add this line to prevent horizontal scrolling */
+    }
+}
+
 @media (max-width: 768px){
     .cardPubli{
         object-fit: cover;
@@ -228,6 +254,7 @@ background-color: rgb(9, 86, 250);
         overflow-x: hidden; /* Add this line to prevent horizontal scrolling */
     }
 }
+
 .cards-section .card video {
     object-fit: contain;
     height: auto;
@@ -266,12 +293,7 @@ background-color: rgb(9, 86, 250);
     margin-top: auto;
 }
 
-#card-meio {
-    display: flex;
-    margin-top: 20px;
-    border: 0.5px solid #000;
-    margin: 5px;
-}
+
 .blur-background {
     filter: blur(5px);
     transition: filter 0.3s;
