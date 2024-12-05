@@ -1,5 +1,3 @@
-import emailjs from 'emailjs/browser'
-
 document.addEventListener('DOMContentLoaded', () => {
     console.log("DOM completamente carregado e analisado"); // Log para depuração
     const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
